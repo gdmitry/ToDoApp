@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-plugin-functional-hmr": "^1.0.24",
     "react-test-renderer": "16.3.1"
   },
   "scripts": {
@@ -16,6 +17,6 @@
   },
   "dependencies": {
     "react": "16.3.1",
-    "react-native": "~0.55.2"
+    "react-native": "^0.55"
   }
 }
