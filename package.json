@@ -2,21 +2,28 @@
   "name": "ToDoApp",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "babel-plugin-functional-hmr": "^1.0.24",
-    "react-test-renderer": "16.3.1"
-  },
   "scripts": {
     "start": "react-native start",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint index.js App.js",
+    "lint:fix": "eslint index.js App.js --fix"
   },
   "jest": {
     "preset": "react-native"
   },
   "dependencies": {
     "react": "16.3.1",
-    "react-native": "^0.55"
+    "react-native": "0.54.0",
+    "react-native-elements": "^0.19.1"
+  },
+  "devDependencies": {
+    "react-test-renderer": "16.3.1",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
   }
 }
