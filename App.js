@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   }
 });
 
-getUsers(since = '', perPage = '') {
+const getUsers = function (since = '', perPage = '') {
   const url = `https://api.github.com/users?per_page=${perPage}&since=${since}`;
   return fetch(url, {
     method: 'GET',
@@ -22,7 +22,7 @@ getUsers(since = '', perPage = '') {
     }
   })
     .then(res => res.json());
-}
+};
 
 export default class App extends React.Component {
   constructor(props) {
@@ -43,18 +43,14 @@ export default class App extends React.Component {
   fetchData() {
     const { page, perPage } = this.state;
     this.setState({ loading: true });
-    this.getUsers(page, perPage)
-      .then(res => {
-        this.setState({
-          data: page === 1 ? res.results : [...this.state.data, ...res.results],
-          error: res.error || null,
-          loading: false,
-          refreshing: false
-        });
-      })
-      .catch(error => {
-        this.setState({ error, loading: false });
-      });
+    getUsers(page, perPage)
+      .then(res => this.setState({
+        data: page === 1 ? res.results : [...this.state.data, ...res.results],
+        error: res.error || null,
+        loading: false,
+        refreshing: false
+      }))
+      .catch(error => this.setState({ error, loading: false }));
   }
 
   render() {
