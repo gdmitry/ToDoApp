@@ -6,7 +6,7 @@ import { List, ListItem } from 'react-native-elements';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center'
   }
@@ -24,6 +24,8 @@ const getUsers = function (since = '', perPage = '') {
     .then(res => res.json());
 };
 
+let counter = 0;
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,16 +38,31 @@ export default class App extends React.Component {
       refreshing: false,
       text: ''
     };
+  }
 
-    setTimeout(() => this.fetchData(), 3000);
+  componentDidMount() {
+    alert('mounted');
+    setInterval(() => this.setState({
+      data: [{
+        html_url: 'https://github.com/mojombo',
+         login: 'mojombo', 
+         avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
+         counter: counter++
+      }]
+    }), 1000);
+  }
+
+  componentWillUnmount() {
+    alert('will unmount!');
   }
 
   fetchData() {
     const { page, perPage } = this.state;
     this.setState({ loading: true });
     getUsers(page, perPage)
+      .then(res => { alert(JSON.stringify(res)); return res; })
       .then(res => this.setState({
-        data: page === 1 ? res.results : [...this.state.data, ...res.results],
+        data: page === 1 ? res : [...this.state.data, ...res],
         error: res.error || null,
         loading: false,
         refreshing: false
@@ -54,19 +71,25 @@ export default class App extends React.Component {
   }
 
   render() {
+    // alert(JSON.stringify(this.state));
+     
     return (
       <View style={styles.container}>
-        <Text>{this.state.error}</Text>
-        <List>
+        {/* <Text>{this.state.error}</Text> */}
+        <List style={{}} containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
           <FlatList
+            style={{ width: '100%', backgroundColor: 'red'}}
             data={this.state.data}
-            renderItem={({ user }) => {
-              console.warn(JSON.stringify(user));
+            extraData={this.state.data}
+            keyExtractor={item => item.login}
+            renderItem={({ item }) => {
+              //console.warn(JSON.stringify(item));
               return (<ListItem
                 roundAvatar
-                title={`${user.login}`}
-                subtitle={user.html_url}
-                avatar={{ uri: user.avatar_url }}
+                title={item.login}
+                subtitle={item.html_url}
+                avatar={{ uri: item.avatar_url }}
+                containerStyle={{ borderBottomWidth: 0 }}
               />);
             }}
           />
