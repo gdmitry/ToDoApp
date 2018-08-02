@@ -6,9 +6,9 @@ import { List, ListItem } from 'react-native-elements';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: 'yellow'
+  //   alignItems: 'center',
+  //   justifyContent: 'center'
   }
 });
 
@@ -33,7 +33,7 @@ export default class App extends React.Component {
       loading: false,
       data: [],
       page: 1,
-      perPage: 20,
+      perPage: 1,
       error: null,
       refreshing: false,
       text: ''
@@ -42,14 +42,27 @@ export default class App extends React.Component {
 
   componentDidMount() {
     alert('mounted');
-    setInterval(() => this.setState({
-      data: [{
-        html_url: 'https://github.com/mojombo',
-         login: 'mojombo', 
-         avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
-         counter: counter++
-      }]
-    }), 1000);
+    // setInterval(() => this.setState({
+    //   data: [{
+    //     html_url: 'https://github.com/mojombo',
+    //      login: 'mojombo', 
+    //      avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
+    //      counter: counter++
+    //   },
+    //   {
+    //     html_url: 'https://github.com/mojombo',
+    //      login: 'mojombo', 
+    //      avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
+    //      counter: counter++
+    //   },
+    //   {
+    //     html_url: 'https://github.com/mojombo',
+    //      login: 'mojombo', 
+    //      avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
+    //      counter: counter++
+    //   }]
+    // }), 1000);
+    this.fetchData();
   }
 
   componentWillUnmount() {
@@ -60,7 +73,7 @@ export default class App extends React.Component {
     const { page, perPage } = this.state;
     this.setState({ loading: true });
     getUsers(page, perPage)
-      .then(res => { alert(JSON.stringify(res)); return res; })
+      // .then(res => { alert(JSON.stringify(res)); return res; })
       .then(res => this.setState({
         data: page === 1 ? res : [...this.state.data, ...res],
         error: res.error || null,
@@ -70,18 +83,30 @@ export default class App extends React.Component {
       .catch(error => this.setState({ error, loading: false }));
   }
 
+  renderSeparator = () => (
+      <View
+        style={{
+          height: 1,
+          width: "86%",
+          backgroundColor: "#CED0CE",
+          marginLeft: "14%"
+        }}
+      />
+    )
+
   render() {
-    // alert(JSON.stringify(this.state));
-     
+    alert(JSON.stringify(this.state.data));
+    //  if (this.state.data.length > 0) return null;
     return (
       <View style={styles.container}>
-        {/* <Text>{this.state.error}</Text> */}
-        <List style={{}} containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+        <List style={{ backgroundColor: 'green'}} containerStyle={{ width: '100%', borderTopWidth: 0, borderBottomWidth: 0 }}>
           <FlatList
-            style={{ width: '100%', backgroundColor: 'red'}}
             data={this.state.data}
             extraData={this.state.data}
             keyExtractor={item => item.login}
+            ItemSeparatorComponent={this.renderSeparator}
+            refreshing={this.state.refreshing}
+            horizontal
             renderItem={({ item }) => {
               //console.warn(JSON.stringify(item));
               return (<ListItem
@@ -89,7 +114,7 @@ export default class App extends React.Component {
                 title={item.login}
                 subtitle={item.html_url}
                 avatar={{ uri: item.avatar_url }}
-                containerStyle={{ borderBottomWidth: 0 }}
+                containerStyle={{ width: '100%', borderBottomWidth: 0 }}
               />);
             }}
           />
