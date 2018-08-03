@@ -1,20 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList, Text, Alert, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
-// https://medium.com/react-native-development/how-to-use-the-flatlist-component-react-native-basics-92c482816fe6
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow'
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
+    backgroundColor: '#fff'
   }
 });
 
-const getUsers = function (since = '', perPage = '') {
-  const url = `https://api.github.com/users?per_page=${perPage}&since=${since}`;
-  return fetch(url, {
+const callGithubAPI = function (url, since = 1, perPage = 1) {
+  return fetch(`${url}?per_page=${perPage}&since=${since}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -24,8 +20,6 @@ const getUsers = function (since = '', perPage = '') {
     .then(res => res.json());
 };
 
-let counter = 0;
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +27,7 @@ export default class App extends React.Component {
       loading: false,
       data: [],
       page: 1,
-      perPage: 1,
+      perPage: 2,
       error: null,
       refreshing: false,
       text: ''
@@ -41,39 +35,15 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    alert('mounted');
-    // setInterval(() => this.setState({
-    //   data: [{
-    //     html_url: 'https://github.com/mojombo',
-    //      login: 'mojombo', 
-    //      avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
-    //      counter: counter++
-    //   },
-    //   {
-    //     html_url: 'https://github.com/mojombo',
-    //      login: 'mojombo', 
-    //      avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
-    //      counter: counter++
-    //   },
-    //   {
-    //     html_url: 'https://github.com/mojombo',
-    //      login: 'mojombo', 
-    //      avatar_url: 'https://avatars0.githubusercontent.com/u/1?v=4', 
-    //      counter: counter++
-    //   }]
-    // }), 1000);
     this.fetchData();
-  }
-
-  componentWillUnmount() {
-    alert('will unmount!');
   }
 
   fetchData() {
     const { page, perPage } = this.state;
     this.setState({ loading: true });
-    getUsers(page, perPage)
-      // .then(res => { alert(JSON.stringify(res)); return res; })
+    const url = 'https://api.github.com/users';
+
+    callGithubAPI(url, page, perPage)
       .then(res => this.setState({
         data: page === 1 ? res : [...this.state.data, ...res],
         error: res.error || null,
@@ -83,43 +53,45 @@ export default class App extends React.Component {
       .catch(error => this.setState({ error, loading: false }));
   }
 
-  renderSeparator = () => (
-      <View
-        style={{
-          height: 1,
-          width: "86%",
-          backgroundColor: "#CED0CE",
-          marginLeft: "14%"
-        }}
-      />
-    )
+  openFollowers(url) {
+    alert(`Click${url}`);
+    callGithubAPI(url, 1, 1)
+  }
 
   render() {
-    alert(JSON.stringify(this.state.data));
-    //  if (this.state.data.length > 0) return null;
     return (
-      <View style={styles.container}>
-        <List style={{ backgroundColor: 'green'}} containerStyle={{ width: '100%', borderTopWidth: 0, borderBottomWidth: 0 }}>
-          <FlatList
-            data={this.state.data}
-            extraData={this.state.data}
-            keyExtractor={item => item.login}
-            ItemSeparatorComponent={this.renderSeparator}
-            refreshing={this.state.refreshing}
-            horizontal
-            renderItem={({ item }) => {
-              //console.warn(JSON.stringify(item));
-              return (<ListItem
-                roundAvatar
-                title={item.login}
-                subtitle={item.html_url}
-                avatar={{ uri: item.avatar_url }}
-                containerStyle={{ width: '100%', borderBottomWidth: 0 }}
-              />);
-            }}
-          />
+      <ScrollView style={styles.container}>
+        <List containerStyle={{
+ width: '100%', borderTopWidth: 0, backgroundColor: 'green', borderBottomWidth: 0
+}}
+        >
+          {this.state.data.map((item, index) => (
+            <TouchableOpacity
+              onPress={() => this.openFollowers(item.followers_url)}
+              style={{
+              backgroundColor: '#fff',
+               flexDirection: 'row',
+                alighItems: 'center',
+                borderBottomWidth: 1,
+                borderColor: '#CED0CE',
+                padding: 10
+                }}
+              key={index}
+            >
+              <Image
+                style={{
+                    width: 50, height: 50, borderRadius: 25, marginRight: 10
+                  }}
+                source={{ uri: item.avatar_url }}
+              />
+              <View style={{ justifyContent: 'center', flexDirection: 'column' }}>
+                <Text>{item.login}</Text>
+                <Text>{item.html_url}</Text>
+              </View>
+            </TouchableOpacity >
+          ))}
         </List>
-      </View>
+      </ScrollView>
     );
   }
 }
