@@ -6,6 +6,7 @@ import {
     Text,
     ActivityIndicator
 } from 'react-native';
+import { Actions as AAA } from 'react-native-router-flux';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -23,6 +24,10 @@ class Home extends Component {
         this.props.getUsers(1, 20);
     }
 
+    goToAbout() {
+        AAA.gridView({ page: 'followers' })
+     }
+
     render() {
         if (this.props.error) {
             return <Text>{this.props.error}</Text>
@@ -35,7 +40,7 @@ class Home extends Component {
                 </View>
             ); 
         }
-        
+
         return (
             <View style={{flex:1, backgroundColor: '#F5F5F5', paddingTop:20}}>
                 <FlatList                        ref='listRef'
@@ -47,15 +52,19 @@ class Home extends Component {
     }
  
     renderItem({ item: l, index: i }) {
+        const { getFollowers } = this.props;
         return (
             <ListItem
-            roundAvatar
+            roundAvatar 
             avatar={{uri:l.avatar_url}}
             key={i}
             title={l.login}
             subtitle={l.html_url}
             hideChevron
-            onPress={() => this.props.getFollowers(l.login, 1, 20)} />
+            onPress={() => {
+                getFollowers(l.login, 1, 20);
+                this.goToAbout()
+            }} />
         )
     }
 };
