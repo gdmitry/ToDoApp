@@ -1,22 +1,27 @@
 import { combineReducers } from 'redux';
-import { USERS_DATA, FOLLOWERS_DATA } from "../actions/" //Import the actions types constant we defined in our actions
+import { ERROR, LOADING, FOLLOWERS_DATA, USERS_DATA } from  '../actionsTypes';
 
-let dataState = { users: [], followers: [], loading: true };
+let dataState = { users: [], followers: [], loading: true, error: null };
 
 const dataReducer = (state = dataState, action) => {
-    switch (action.type) {
+    switch (action.type) { 
+        case ERROR:             
+            state = { ...state, error: action.text };
+            return state;
+        case LOADING:             
+            state = { ...state, loading: !!action.status };
+            return state;
         case USERS_DATA:
-            state = { ...state, users: action.data, loading: false };
+            state = { ...state, users: action.data, loading: false, error: action.data.message ? action.data.message : null };
             return state;
         case FOLLOWERS_DATA:
-            state = { ...state, followers: action.data, loading: false };
+            state = { ...state, users: action.data, loading: false, error: action.data.message ? action.data.message : null };
             return state;
         default:
             return state;
-    }
+    } 
 };
 
-// Combine all the reducers
 const rootReducer = combineReducers({
     dataReducer
 })
