@@ -1,10 +1,9 @@
-// import config from './app/ReactotronConfig';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import store from './app/store';
-import ListView from './app/components/listView';
 import Routes from './app/Routes';
+import './app/ReactotronConfig';
+import store from './app/store';
 
 export default class App extends Component {
   render() {
