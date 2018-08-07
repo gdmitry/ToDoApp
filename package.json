@@ -36,6 +36,7 @@
     "reactotron-react-native": "^2.0.0-alpha.2",
     "reactotron-redux": "latest",
     "reactotron-redux-saga": "^2.0.0",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+    "redux-saga-devtools": "^0.3.0"
   }
 }

@@ -15,10 +15,10 @@ export function getUsers(page, perPage){
     return (dispatch) => {
       dispatch({ type: LOADING, status: true })
       const url = 'https://api.github.com/users';
-      /*callGithubAPI(url, page, perPage)
+      callGithubAPI(url, page, perPage)
         .then(data => dispatch({ type: USERS_DATA, data }))
-        .catch(e => dispatch({ type: ERROR, text: e.message }));*/
-      dispatch({ type: USERS_DATA, data: users })
+        .catch(e => dispatch({ type: ERROR, text: e.message }));
+      // dispatch({ type: USERS_DATA, data: users })
     };
 }
 
