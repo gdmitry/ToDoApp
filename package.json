@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "android": "react-native run-android",
+    "android": "adb reverse tcp:9090 tcp:909 && react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint index.js App.js",
@@ -16,6 +16,7 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.54.0",
+    "react-native-device-info": "^0.22.3",
     "react-native-elements": "^0.19.1",
     "react-native-router-flux": "^4.0.0-beta.31",
     "react-native-vector-icons": "^5.0.0",
@@ -31,6 +32,7 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "jest": "^23.4.2",
     "react-test-renderer": "16.3.1",
     "reactotron-apisauce": "^1.6.0",
     "reactotron-react-native": "^2.0.0-alpha.2",

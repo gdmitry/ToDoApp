@@ -1,11 +1,15 @@
 import Reactotron from 'reactotron-react-native';
-import sagaPlugin from 'reactotron-redux-saga'
+import sagaPlugin from 'reactotron-redux-saga';
 import { reactotronRedux } from 'reactotron-redux';
+import DeviceInfo from 'react-native-device-info';
+
+alert(DeviceInfo.getModel());
 
 Reactotron
   .configure({
     name: 'App',
-    host: '10.0.2.2',
+    host: 'localhost',
+    // host: '10.0.2.2',
     port: 9090
   })
   .use(sagaPlugin())
@@ -13,5 +17,5 @@ Reactotron
   .useReactNative()
   .connect();
 
-Reactotron.clear()
-console.tron = Reactotron
+Reactotron.clear();
+console.tron = Reactotron;
