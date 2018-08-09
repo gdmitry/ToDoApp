@@ -1,10 +1,10 @@
 {
-  "name": "ToDoApp",
+  "name": "react-native-playground",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-native start",
-    "android": "adb reverse tcp:9090 tcp:909 && react-native run-android",
+    "start": "adb reverse tcp:9090 tcp:9090 && react-native start",
+    "android": "adb reverse tcp:9090 tcp:9090 && react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint index.js App.js",

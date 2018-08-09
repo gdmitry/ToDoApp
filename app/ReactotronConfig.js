@@ -3,13 +3,12 @@ import sagaPlugin from 'reactotron-redux-saga';
 import { reactotronRedux } from 'reactotron-redux';
 import DeviceInfo from 'react-native-device-info';
 
-alert(DeviceInfo.getModel());
+const isRealDevice = DeviceInfo.getModel() === 'Moto G (4)';
 
 Reactotron
   .configure({
     name: 'App',
-    host: 'localhost',
-    // host: '10.0.2.2',
+    host: isRealDevice ? 'localhost' : '10.0.2.2', // need to have different ips for emulator and device
     port: 9090
   })
   .use(sagaPlugin())
