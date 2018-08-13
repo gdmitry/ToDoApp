@@ -5,6 +5,7 @@ import DeviceInfo from 'react-native-device-info';
 
 const isRealDevice = DeviceInfo.getModel() === 'Moto G (4)';
 
+// Configure Reactotron
 Reactotron
   .configure({
     name: 'App',

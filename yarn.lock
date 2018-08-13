@@ -4912,6 +4912,10 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
+redux-observable@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-1.0.0.tgz#780ff2455493eedcef806616fe286b454fd15d91"
+
 redux-saga-devtools@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/redux-saga-devtools/-/redux-saga-devtools-0.3.0.tgz#720aa90e0e85c55fba73524a600538e4df673fc2"

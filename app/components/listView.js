@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 import * as Actions from '../actions';
 import { ListItem } from 'react-native-elements';
+import orientation from '../helpers/orientation';
 
 class Home extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.getUsers(1, 20);
+    orientation.onOrientationChange((a) => alert(a));
   }
 
   goToAbout() {
