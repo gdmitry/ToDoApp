@@ -1,11 +1,15 @@
 import { combineReducers } from 'redux';
-import { ERROR, LOADING, FOLLOWERS_DATA, USERS_DATA } from  '../actionsTypes';
+import { ERROR, LOADING, FETCH_USERS, FOLLOWERS_DATA, FETCH_FOLLOWERS, USERS_DATA } from  '../actionsTypes';
 
-let dataState = { users: [], followers: [], loading: true, error: null };
+let dataState = { users: [], followers: [], loading: false, error: null };
 
 const dataReducer = (state = dataState, action) => {
-    switch (action.type) { 
-        case ERROR:             
+    switch (action.type) {
+      case FETCH_USERS:
+      case FETCH_FOLLOWERS:
+            state = { ...state, loading: false };
+            return state;
+      case ERROR:
             state = { ...state, error: action.text };
             return state;
         case LOADING:             

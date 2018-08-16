@@ -21,8 +21,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.getUsers(1, 20);
-    orientation.onOrientationChange((a) => alert(a));
+    this.props.fetchUsers(1, 20);
   }
 
   goToAbout() {
@@ -54,7 +53,7 @@ class Home extends Component {
   }
 
   renderItem({item: l, index: i}) {
-    const {getFollowers} = this.props;
+    // const {getFollowers} = this.props;
     return (
       <ListItem
         roundAvatar
@@ -64,7 +63,7 @@ class Home extends Component {
         subtitle={l.html_url}
         hideChevron
         onPress={() => {
-          getFollowers(l.login, 1, 20);
+          // getFollowers(l.login, 1, 20);
           this.goToAbout()
         }}/>
     )
