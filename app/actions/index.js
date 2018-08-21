@@ -8,13 +8,3 @@ export function fetchUsers(page, perPage) {
 export function fetchFollowers(page, perPage) {
   return (dispatch) => dispatch({type: FETCH_FOLLOWERS, data: { page, perPage }});
 }
-//
-// export function getFollowers(login, page, perPage){
-//     return (dispatch) => {
-//       dispatch({ type: LOADING, status: true })
-//       const url = `https://api.github.com/users/${login}/followers`;
-//       callGithubAPI(url, page, perPage)
-//         .then(data => dispatch({ type: FOLLOWERS_DATA, data }))
-//         .catch(e => dispatch({ type: ERROR, text: e.message }));
-//     };
-// }

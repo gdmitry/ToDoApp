@@ -46,7 +46,7 @@ class Home extends Component {
       <View style={{flex: 1, backgroundColor: '#F5F5F5', paddingTop: 20}}>
         <FlatList ref='listRef'
         data={this.props.users}
-        renderItem={(...props) => this.renderItem(...props)}
+        renderItem={(...k) => this.renderItem(...k)}
         keyExtractor={(item, index) => index}/>
       </View>
     );
@@ -70,7 +70,7 @@ class Home extends Component {
   }
 };
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
     loading: state.dataReducer.loading,
     users: state.dataReducer.users,

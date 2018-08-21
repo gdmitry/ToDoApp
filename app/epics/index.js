@@ -1,17 +1,21 @@
-import { merge } from 'rxjs/observable/merge'
+import { combineEpics } from 'redux-observable';
 import { callGithubAPI } from '../helpers/fetch';
 import { USERS_DATA, FETCH_USERS } from '../actionsTypes';
-import Rx from 'rxjs'
+import { from, of } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
 
 function fetchUsersEpic(action$) {
     const url = 'https://api.github.com/users';
+
     return action$
       .ofType(FETCH_USERS)
-      // .do(() => alert('here'))
-        .mergeMap(({ payload: { page, perPage } }) => Rx.Observable.fromPromise( callGithubAPI(url, page, perPage)))
-        .mapTo((data) => Rx.Observable.of({ type: USERS_DATA, data }));
+      .do(() => alert('here'))
+        .mergeMap(({ payload: { page, perPage } }) => from( callGithubAPI(url, page, perPage)))
+        .mapTo((data) => of({ type: USERS_DATA, data }));
 }
 
-export default (action$, store) => merge(
-    fetchUsersEpic(action$, store)
+const rootEpic = combineEpics(
+    fetchUsersEpic
 );
+
+export default rootEpic;
