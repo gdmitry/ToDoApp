@@ -24,19 +24,18 @@
     "redux": "^4.0.0",
     "redux-observable": "^1.0.0",
     "redux-thunk": "^2.3.0",
-    "rxjs": "^6.2.2",
-    "rxjs-compat": "^6.2.2"
+    "rxjs": "^6.2.2"
   },
   "devDependencies": {
-    "eslint": "^4.19.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "jest": "^23.4.2",
-    "react-test-renderer": "16.3.1",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.5.0",
+    "react-test-renderer": "^16.4.2",
     "reactotron-apisauce": "^1.6.0",
-    "reactotron-react-native": "^2.0.0-alpha.2",
-    "reactotron-redux": "latest"
+    "reactotron-react-native": "^2.1.0",
+    "reactotron-redux": "^2.1.0"
   }
 }
