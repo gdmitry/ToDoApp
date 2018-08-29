@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   FlatList,
   View,
   Text,
   ActivityIndicator
 } from 'react-native';
-import { Actions as AAA } from 'react-native-router-flux';
-
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -15,6 +14,15 @@ import { ListItem } from 'react-native-elements';
 import orientation from '../helpers/orientation';
 
 class Home extends Component {
+  static propTypes = {
+    navigateToPage: PropTypes.func.isRequired,
+    fetchUsers: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    users: PropTypes.array.isRequired,
+    followers: PropTypes.array.isRequired,
+    error: PropTypes.object
+  }
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -24,9 +32,8 @@ class Home extends Component {
     this.props.fetchUsers(1, 20);
   }
 
-  goToAbout() {
-    // AAA.gridView({ page: 'followers' })
-    AAA.gridView();
+  goToAbout(login) {
+    this.props.navigateToPage('gridView', { login });
   }
 
   render() {
@@ -46,7 +53,7 @@ class Home extends Component {
       <View style={{flex: 1, backgroundColor: '#F5F5F5', paddingTop: 20}}>
         <FlatList ref='listRef'
         data={this.props.users}
-        renderItem={(...k) => this.renderItem(...k)}
+        renderItem={(...args) => this.renderItem(...args)}
         keyExtractor={(item, index) => index}/>
       </View>
     );
@@ -64,7 +71,7 @@ class Home extends Component {
         hideChevron
         onPress={() => {
           // getFollowers(l.login, 1, 20);
-          this.goToAbout()
+          this.goToAbout(l.login)
         }}/>
     )
   }
