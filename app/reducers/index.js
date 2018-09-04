@@ -7,7 +7,7 @@ const dataReducer = (state = dataState, action) => {
     switch (action.type) {
       case FETCH_USERS:
       case FETCH_FOLLOWERS:
-            state = { ...state, loading: false };
+            state = { ...state, loading: true };
             return state;
       case ERROR:
             state = { ...state, error: action.text };

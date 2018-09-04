@@ -38,7 +38,7 @@ const isTablet = () => {
 const isPhone = () => !isTablet();
 
 /**
- *
+ * Subscribe on layout changes
  */
 const onOrientationChange = (callback) => {
     Dimensions.addEventListener('change', () => {
