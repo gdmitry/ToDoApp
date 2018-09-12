@@ -4,6 +4,7 @@ import {
   FlatList,
   View,
   Text,
+  Image,
   ActivityIndicator
 } from 'react-native';
 import { bindActionCreators } from 'redux';
