@@ -2063,6 +2063,16 @@ eslint-plugin-jsx-a11y@^6.1.1:
     has "^1.0.3"
     jsx-ast-utils "^2.0.1"
 
+eslint-plugin-react-native-globals@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-native-globals/-/eslint-plugin-react-native-globals-0.1.2.tgz#ee1348bc2ceb912303ce6bdbd22e2f045ea86ea2"
+
+eslint-plugin-react-native@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-native/-/eslint-plugin-react-native-3.3.0.tgz#77135f1b9d69058c5612777aac90d9cd6d35af33"
+  dependencies:
+    eslint-plugin-react-native-globals "^0.1.1"
+
 eslint-plugin-react@^7.11.1:
   version "7.11.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.11.1.tgz#c01a7af6f17519457d6116aa94fc6d2ccad5443c"
@@ -4693,10 +4703,6 @@ react-native-elements@^0.19.1:
     lodash.times "^4.3.2"
     opencollective "^1.0.3"
     prop-types "^15.5.8"
-
-react-native-gridview@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-gridview/-/react-native-gridview-0.1.2.tgz#324a13189f3e06b77311fd924b23d548dff3b040"
 
 react-native-router-flux@^4.0.0-beta.31:
   version "4.0.0-beta.31"

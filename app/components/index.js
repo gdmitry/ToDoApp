@@ -4,11 +4,11 @@ import ListView from './listView';
 import GridView from './gridView';
 
 const Routes = () => (
-   <Router>
-      <Scene key = "root">
-         <Scene key = "listView" component = {ListView} title = "List" initial = {true} />
-         <Scene key = "gridView" component = {GridView} title = "Grid" />
-      </Scene>
-   </Router>
-)
+  <Router>
+    <Scene key="root">
+      <Scene key="listView" component={ListView} title="List" initial />
+      <Scene key="gridView" component={GridView} title="Grid" />
+    </Scene>
+  </Router>
+);
 export default Routes;

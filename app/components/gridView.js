@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import {
   View,
   Text,
-  ActivityIndicator
+  ActivityIndicator,
+    StyleSheet,
+    Image
 } from 'react-native';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -40,7 +42,7 @@ class List extends Component {
     loading: PropTypes.bool.isRequired,
     users: PropTypes.array.isRequired,
     error: PropTypes.object
-  }
+  };
 
   componentDidMount() {
     this.props.fetchUsers(1, 20);
@@ -74,16 +76,26 @@ class List extends Component {
       { name: 'PUMPKIN', code: '#d35400' }, { name: 'POMEGRANATE', code: '#c0392b' },
       { name: 'SILVER', code: '#bdc3c7' }, { name: 'ASBESTOS', code: '#7f8c8d' },
     ];
+      const { followers } = this.props;
 
     return (
       <GridView
         itemDimension={130}
-        items={items}
+        items={followers}
         style={styles.gridView}
         renderItem={item => (
-          <View style={[styles.itemContainer, { backgroundColor: item.code }]}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.code}</Text>
+          <View style={[styles.itemContainer, { backgroundColor: 'grey' }]}>
+            <View style={{ position: 'absolute', top:0, left: 0, right: 0, bottom: 0}}>
+
+              <Image
+                  style={{
+flex: 1
+                  }}
+                  source={{uri: item.avatar_url}}
+              />
+            </View>
+              <Text style={styles.itemName}>{item.login}</Text>
+            <Text style={styles.itemCode}>{item.html_url}</Text>
           </View>
         )}
       />

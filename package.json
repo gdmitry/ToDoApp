@@ -7,8 +7,8 @@
     "android": "adb reverse tcp:9090 tcp:9090 && react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
-    "lint": "eslint index.js App.js",
-    "lint:fix": "eslint index.js App.js --fix"
+    "lint": "eslint index.js App.js app",
+    "lint:fix": "eslint index.js App.js app --fix"
   },
   "jest": {
     "preset": "react-native"
@@ -34,6 +34,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.3.0",
     "jest": "^23.5.0",
     "react-test-renderer": "^16.4.2",
     "reactotron-apisauce": "^1.6.0",

@@ -4,9 +4,10 @@ import { createStore, applyMiddleware } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import Reactotron from 'reactotron-react-native';
 
-import reducers from '../app/reducers/index';
-import epics from '../app/epics/index';
+import reducers from './reducers/index';
+import epics from './epics/index';
 
+// eslint-disable-line import/no-mutable-exports
 let store = null;
 
 const epicMiddleware = createEpicMiddleware();
