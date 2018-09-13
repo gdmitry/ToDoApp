@@ -9,7 +9,7 @@ Reactotron
   .configure({
     name: 'App',
     host: isRealDevice ? 'localhost' : '10.0.2.2', // need to have different ips for emulator and device
-    port: 9090
+    port: 9090,
   })
   .use(reactotronRedux())
   .useReactNative()

@@ -15,10 +15,6 @@
       "error",
       "as-needed"
     ],
-    "comma-dangle": [
-      "error",
-      "never"
-    ],
     "react/jsx-filename-extension": 0
   }
 }

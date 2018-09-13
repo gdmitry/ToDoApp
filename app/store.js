@@ -13,7 +13,7 @@ let store = null;
 const epicMiddleware = createEpicMiddleware();
 const middlewares = [
   thunk,
-  epicMiddleware
+  epicMiddleware,
 ];
 
 // check here if it is DEV mode
