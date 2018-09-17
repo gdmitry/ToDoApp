@@ -2,11 +2,8 @@
   "presets": [
     "react-native"
   ],
-  "env": {
-    "development": {
-      "plugins": [
-        "transform-react-jsx-source"
-      ]
-    }
-  }
+  "plugins": [
+    "transform-react-jsx-source",
+    "transform-class-properties"
+  ]
 }

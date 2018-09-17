@@ -2,6 +2,7 @@ import 'rxjs';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+// eslint-disable-line no-extraneous-dependencies
 import Reactotron from 'reactotron-react-native';
 
 import reducers from './reducers/index';
@@ -17,7 +18,7 @@ const middlewares = [
 ];
 
 // check here if it is DEV mode
-if (true) {
+if (__DEV__) {
   store = Reactotron.createStore(reducers, applyMiddleware(...middlewares));
 } else {
   store = createStore(reducers, applyMiddleware(...middlewares));

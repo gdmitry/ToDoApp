@@ -86,13 +86,9 @@ class List extends Component {
         renderItem={item => (
           <View style={[styles.itemContainer, { backgroundColor: 'grey' }]}>
             <View style={{ position: 'absolute', top:0, left: 0, right: 0, bottom: 0}}>
-
               <Image
-                  style={{
-flex: 1
-                  }}
-                  source={{uri: item.avatar_url}}
-              />
+                  style={{ flex: 1 }}
+                  source={{uri: item.avatar_url}} />
             </View>
               <Text style={styles.itemName}>{item.login}</Text>
             <Text style={styles.itemCode}>{item.html_url}</Text>

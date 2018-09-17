@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "adb reverse tcp:9090 tcp:9090 && react-native start",
-    "android": "adb reverse tcp:9090 tcp:9090 && react-native run-android",
+    "android": "adb reverse tcp:9090 tcp:9090 && react-native run-android rt=my-app-id",
+    "prod": "cd android && ./gradlew assembleRelease",
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint index.js App.js app",
