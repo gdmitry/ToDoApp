@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
 import {
-  ERROR, LOADING, FETCH_USERS, FOLLOWERS_DATA, FETCH_FOLLOWERS, USERS_DATA
+  ERROR, LOADING, FETCH_USERS, FOLLOWERS_DATA, FETCH_FOLLOWERS, USERS_DATA,
 } from '../actionsTypes';
 
 const dataState = {
-  users: [], followers: [], loading: false, error: null
+  users: [], followers: [], loading: false, error: null,
 };
 
-const dataReducer = (state = dataState, action) => {
+const dataReducer = (stateObj = dataState, action) => {
+  let state = stateObj;
   switch (action.type) {
     case FETCH_USERS:
     case FETCH_FOLLOWERS:
@@ -21,12 +22,18 @@ const dataReducer = (state = dataState, action) => {
       return state;
     case USERS_DATA:
       state = {
-        ...state, users: action.data, loading: false, error: action.data.message ? action.data.message : null
+        ...state,
+        users: action.data,
+        loading: false,
+        error: action.data.message ? action.data.message : null,
       };
       return state;
     case FOLLOWERS_DATA:
       state = {
-        ...state, followers: action.data, loading: false, error: action.data.message ? action.data.message : null
+        ...state,
+        followers: action.data,
+        loading: false,
+        error: action.data.message ? action.data.message : null,
       };
       return state;
     default:
@@ -35,7 +42,7 @@ const dataReducer = (state = dataState, action) => {
 };
 
 const rootReducer = combineReducers({
-  dataReducer
+  dataReducer,
 });
 
 export default rootReducer;

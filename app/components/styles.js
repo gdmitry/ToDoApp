@@ -1,5 +1,5 @@
 import {
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -7,24 +7,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
   },
 
   row: {
     borderBottomWidth: 1,
     borderColor: '#ccc',
-    padding: 10
+    padding: 10,
   },
 
   title: {
     fontSize: 15,
-    fontWeight: '600'
+    fontWeight: '600',
   },
 
   description: {
     marginTop: 5,
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 });
 
 export default styles;

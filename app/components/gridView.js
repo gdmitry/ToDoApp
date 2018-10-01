@@ -36,14 +36,6 @@ const styles = StyleSheet.create({
 });
 
 class List extends Component {
-  static propTypes = {
-    navigateToPage: PropTypes.func.isRequired,
-    fetchUsers: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
-    users: PropTypes.array.isRequired,
-    error: PropTypes.object
-  };
-
   componentDidMount() {
     this.props.fetchUsers(1, 20);
   }
@@ -54,13 +46,13 @@ class List extends Component {
 
   render() {
     if (this.props.error) {
-      return <Text>{this.props.error}</Text>
+      return <Text>{this.props.error}</Text>;
     }
 
     if (this.props.loading) {
       return (
         <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator animating={true}/>
+          <ActivityIndicator animating />
         </View>
       );
     }
@@ -86,9 +78,13 @@ class List extends Component {
         renderItem={item => (
           <View style={[styles.itemContainer, { backgroundColor: 'grey' }]}>
             <View style={{ position: 'absolute', top:0, left: 0, right: 0, bottom: 0}}>
+
               <Image
-                  style={{ flex: 1 }}
-                  source={{uri: item.avatar_url}} />
+                  style={{
+flex: 1
+                  }}
+                  source={{uri: item.avatar_url}}
+              />
             </View>
               <Text style={styles.itemName}>{item.login}</Text>
             <Text style={styles.itemCode}>{item.html_url}</Text>
@@ -103,9 +99,17 @@ function mapStateToProps(state) {
   return {
     loading: state.dataReducer.loading,
     followers: state.dataReducer.followers,
-    error: state.dataReducer.error
-  }
+    error: state.dataReducer.error,
+  };
 }
+
+List.propTypes = {
+  navigateToPage: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  users: PropTypes.array.isRequired,
+  error: PropTypes.object,
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
