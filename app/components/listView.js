@@ -4,7 +4,7 @@ import {
   FlatList,
   View,
   Text,
-  ActivityIndicator,
+  ActivityIndicator
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -75,14 +75,14 @@ Home.propTypes = {
   fetchUsers: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   users: PropTypes.array.isRequired,
-  error: PropTypes.object,
+  error: PropTypes.object
 };
 
 function mapStateToProps(state) {
   return {
     loading: state.dataReducer.loading,
     users: state.dataReducer.users,
-    error: state.dataReducer.error,
+    error: state.dataReducer.error
   };
 }
 

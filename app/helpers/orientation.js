@@ -50,5 +50,5 @@ export default {
   isLandscape,
   isTablet,
   isPhone,
-  onOrientationChange,
+  onOrientationChange
 };
