@@ -36,10 +36,6 @@ const styles = StyleSheet.create({
 });
 
 class List extends Component {
-  componentDidMount() {
-    this.props.fetchUsers(1, 20);
-  }
-
   goToList(login) {
     this.props.navigateToPage('listView', { login });
   }
@@ -47,14 +43,6 @@ class List extends Component {
   render() {
     if (this.props.error) {
       return <Text>{this.props.error}</Text>;
-    }
-
-    if (this.props.loading) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator animating />
-        </View>
-      );
     }
 
     const { followers } = this.props;

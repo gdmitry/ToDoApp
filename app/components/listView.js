@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {
   FlatList,
   View,
-  Text,
-  ActivityIndicator
+  Text
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -13,15 +12,6 @@ import styles from './styles';
 import * as Actions from '../actions';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {
-    this.props.fetchUsers(1, 20);
-  }
-
   goToGrid(login) {
     this.props.navigateToPage('gridView', { login });
   }
@@ -29,14 +19,6 @@ class Home extends Component {
   render() {
     if (this.props.error) {
       return <Text>{this.props.error}</Text>;
-    }
-
-    if (this.props.loading) {
-      return (
-        <View style={styles.activityIndicatorContainer}>
-          <ActivityIndicator animating />
-        </View>
-      );
     }
 
     return (
