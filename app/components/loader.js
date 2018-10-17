@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
   View,
   ActivityIndicator
@@ -12,15 +11,14 @@ function mapStateToProps(state) {
     loading: state.dataReducer.loading
   };
 }
-const mapDispatchToProps = (dispatch) => {
-  return { dispatch }
-}
+const mapDispatchToProps = dispatch => ({ dispatch });
 
 export default function withLoader(WrappedComponent, apiAction) {
   return connect(mapStateToProps, mapDispatchToProps)(class extends Component {
     componentDidMount() {
       if (apiAction) this.props.dispatch(apiAction);
     }
+
     render() {
       if (this.props.loading) {
         return (

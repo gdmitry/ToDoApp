@@ -41,11 +41,11 @@ class List extends Component {
   }
 
   render() {
+    const { followers } = this.props;
+
     if (this.props.error) {
       return <Text>{this.props.error}</Text>;
     }
-
-    const { followers } = this.props;
 
     return (
       <GridView
@@ -57,7 +57,11 @@ class List extends Component {
             <ActivityIndicator animating style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} />
             <Image
               style={{
-                position: 'absolute', top: 0, left: 0, right: 0, bottom: 0
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0
               }}
               source={{ uri: item.avatar_url }}
             />

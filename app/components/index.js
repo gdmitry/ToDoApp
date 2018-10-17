@@ -14,4 +14,5 @@ const Routes = () => (
     </Scene>
   </Router>
 );
+
 export default Routes;

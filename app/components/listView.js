@@ -8,7 +8,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ListItem } from 'react-native-elements';
-import styles from './styles';
 import * as Actions from '../actions';
 
 class Home extends Component {
