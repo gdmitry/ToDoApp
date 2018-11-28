@@ -3,7 +3,7 @@ import { Router, Scene } from 'react-native-router-flux';
 
 import ListView from './listView';
 import GridView from './gridView';
-import withLoader from './loaderHOC';
+import withLoader from './loader';
 import * as Actions from '../actions';
 
 const Routes = () => (

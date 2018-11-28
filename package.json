@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "link": "react-native link",
     "start": "adb reverse tcp:9090 tcp:9090 && react-native start",
     "android": "adb reverse tcp:9090 tcp:9090 && react-native run-android rt=my-app-id",
     "prod": "cd android && ./gradlew assembleRelease",
