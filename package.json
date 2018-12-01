@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "link": "react-native link",
+    "link": "react-native link react-native-google-signin",
+    "unlink": "react-native unlink react-native-playground",
     "start": "adb reverse tcp:9090 tcp:9090 && react-native start",
     "android": "adb reverse tcp:9090 tcp:9090 && react-native run-android rt=my-app-id",
     "prod": "cd android && ./gradlew assembleRelease",
@@ -21,6 +22,7 @@
     "react-native": "0.54.0",
     "react-native-device-info": "^0.22.3",
     "react-native-elements": "^0.19.1",
+    "react-native-google-signin": "^1.0.1",
     "react-native-router-flux": "^4.0.0-beta.31",
     "react-native-super-grid": "^2.4.3",
     "react-native-vector-icons": "^5.0.0",

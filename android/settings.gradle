@@ -1,5 +1,9 @@
 rootProject.name = 'ToDoApp'
+
 include ':react-native-device-info'
+include ':react-native-google-signin'
+
 project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
+project(':react-native-google-signin').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-google-signin/android')
 
 include ':app'

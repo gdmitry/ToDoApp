@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ListItem } from 'react-native-elements';
 import * as Actions from '../actions';
+//import Auth from './auth';
 
 class Home extends Component {
   goToGrid(login) {
@@ -19,7 +20,7 @@ class Home extends Component {
     if (this.props.error) {
       return <Text>{this.props.error}</Text>;
     }
-
+    //return <Auth />
     return (
       <View style={{ flex: 1, backgroundColor: '#F5F5F5', paddingTop: 20 }}>
         <FlatList
